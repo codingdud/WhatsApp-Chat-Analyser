@@ -55,8 +55,6 @@ Explore the different tabs to view detailed statistics and visualizations.
 ## Contributors
 
 - [Sheefa Naaz](https://github.com/sheefanaaz123)
-- [Contributor 1](https://github.com/contributor1)
-- [Contributor 2](https://github.com/contributor2)
 
 ## License
 
