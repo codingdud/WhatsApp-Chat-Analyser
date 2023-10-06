@@ -168,7 +168,6 @@ if uploaded_file is not None:
     user_list.sort()
     user_list.insert(0,"Overall")
 
-    selected_user: Any | None = st.sidebar.selectbox("Show analysis wrt",user_list)
 
     if st.sidebar.button("Show Analysis"):
         num_messages, total_words, total_media,total_links = fetch_stats(selected_user, df)
