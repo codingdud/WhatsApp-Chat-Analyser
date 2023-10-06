@@ -50,17 +50,15 @@ Explore the different tabs to view detailed statistics and visualizations.
 
 - **Streamlit:** Used for building the web application interface.
 - **Python:** The primary programming language for developing the analyzer.
-- **Pandas, NLTK, WordCloud:** Libraries for data manipulation, natural language processing, and word cloud generation.
+- **Pandas, WordCloud:** Libraries for data manipulation and word cloud generation.
 
 ## Contributors
 
-- [Your Name](https://github.com/yourusername)
+- [Sheefa Naaz](https://github.com/sheefanaaz123)
 - [Contributor 1](https://github.com/contributor1)
 - [Contributor 2](https://github.com/contributor2)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
 
-Feel free to customize this template based on your project's specifics!
