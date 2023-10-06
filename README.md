@@ -1,0 +1,66 @@
+# WhatsApp-Chat-Analyser
+
+## Overview
+
+The WhatsApp Chat Analyzer is a tool designed to analyze and provide statistical insights into WhatsApp group or individual chats. By uploading the chat data, users can obtain valuable information such as total media sent, message count, word frequency, word cloud representation, and emojis usage.
+
+## Features
+
+- **Media Statistics:** Displays the total number of media files shared in the chat.
+- **Message Count:** Provides the overall count of messages exchanged.
+- **Word Analysis:** Analyzes the most frequently used words in the chat.
+- **Word Cloud:** Generates a visually appealing word cloud representation based on the chat content.
+- **Emojis Usage:** Highlights the emojis used and their frequency.
+
+## Usage
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/whatsapp-chat-analyzer.git
+cd whatsapp-chat-analyzer
+```
+
+2. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Running the Application
+
+```bash
+streamlit run app.py
+```
+
+Open your browser and navigate to [http://localhost:8501](http://localhost:8501) to access the application.
+
+### Uploading Chat Data
+
+1. Click on the "Upload Chat" button.
+2. Select the WhatsApp chat file (.txt) you want to analyze.
+
+### Viewing Statistics
+
+Explore the different tabs to view detailed statistics and visualizations.
+
+## Tech Stack
+
+- **Streamlit:** Used for building the web application interface.
+- **Python:** The primary programming language for developing the analyzer.
+- **Pandas, NLTK, WordCloud:** Libraries for data manipulation, natural language processing, and word cloud generation.
+
+## Contributors
+
+- [Your Name](https://github.com/yourusername)
+- [Contributor 1](https://github.com/contributor1)
+- [Contributor 2](https://github.com/contributor2)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+
+Feel free to customize this template based on your project's specifics!
