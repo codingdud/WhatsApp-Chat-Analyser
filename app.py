@@ -166,8 +166,9 @@ if uploaded_file is not None:
     user_list = df['user'].unique().tolist()
     user_list.remove('group_notification')
     user_list.sort()
-    user_list.insert(0,"Overall")
+    user_list.insert(0, "Overall")
 
+    selected_user = st.sidebar.selectbox("Show analysis wrt", user_list)
 
     if st.sidebar.button("Show Analysis"):
         num_messages, total_words, total_media,total_links = fetch_stats(selected_user, df)
