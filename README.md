@@ -35,7 +35,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Open your browser and navigate to [http://localhost:8501](https://whatsapp-chat-analyser-grml.onrender.com) to access the application.
+Open your browser and navigate to [URL](https://whatsapp-chat-analyser-grml.onrender.com) to access the application.
 
 ### Uploading Chat Data
 
