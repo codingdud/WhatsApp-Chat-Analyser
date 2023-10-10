@@ -3,10 +3,7 @@ import os
 from typing import Any
 
 import pandas as pd
-
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.dirname(SCRIPT_DIR))
-
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import streamlit as st
 import preprocessor
 from collections import Counter
@@ -14,39 +11,43 @@ import emoji
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-
 from urlextract import URLExtract
+
 extract = URLExtract()
+sentiment_analyzer = SentimentIntensityAnalyzer()
 
 st.sidebar.title("Whatsapp Chat Analyzer")
-def fetch_stats(selected_user,df):
+
+
+def fetch_stats(selected_user, df):
     w = []
 
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
-    num_messages=df.shape[0]
+    num_messages = df.shape[0]
 
     for message in df['message']:
         w.extend(message.split())
 
-    num_media_messages = df[df['message'] =='<Media omitted>\n'].shape[0]
+    num_media_messages = df[df['message'] == '<Media omitted>\n'].shape[0]
 
     links = []
     for message in df['message']:
         links.extend(extract.find_urls(message))
 
-    return num_messages,len(w),num_media_messages,len(links)
+    return num_messages, len(w), num_media_messages, len(links)
+
 
 def most_busy_users(df):
     x = df['user'].value_counts().head()
-    df = round((df['user'].value_counts()/df.shape[0])*100,2).reset_index().rename(columns={'index':'name','user':'percent'})
+    df = round((df['user'].value_counts() / df.shape[0]) * 100, 2).reset_index().rename(
+        columns={'index': 'name', 'user': 'percent'})
 
-    return x,df
+    return x, df
 
-def create_wordcloud(selected_user,df):
 
+def create_wordcloud(selected_user, df):
     f = open('stop_hinglish.txt', 'r')
     stop_words = f.read()
 
@@ -63,15 +64,14 @@ def create_wordcloud(selected_user,df):
                 y.append(word)
         return " ".join(y)
 
-    wc = WordCloud(width=500,height=500,min_font_size=10,background_color='white')
+    wc = WordCloud(width=500, height=500, min_font_size=10, background_color='white')
     temp['message'] = temp['message'].apply(remove_stop_words)
     df_wc = wc.generate(temp['message'].str.cat(sep=" "))
     return df_wc
 
 
-def most_common_words(selected_user,df):
-
-    f = open('stop_hinglish.txt','r')
+def most_common_words(selected_user, df):
+    f = open('stop_hinglish.txt', 'r')
     stop_words = f.read()
 
     if selected_user != 'Overall':
@@ -91,7 +91,7 @@ def most_common_words(selected_user,df):
     return most_common_df
 
 
-def emoji_helper(selected_user,df):
+def emoji_helper(selected_user, df):
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
@@ -104,8 +104,7 @@ def emoji_helper(selected_user,df):
     return emoji_df
 
 
-def monthly_timeline(selected_user,df):
-
+def monthly_timeline(selected_user, df):
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
@@ -119,8 +118,8 @@ def monthly_timeline(selected_user,df):
 
     return timeline
 
-def daily_timeline(selected_user,df):
 
+def daily_timeline(selected_user, df):
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
@@ -128,22 +127,22 @@ def daily_timeline(selected_user,df):
 
     return daily_timeline
 
-def week_activity_map(selected_user,df):
 
+def week_activity_map(selected_user, df):
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
     return df['day_name'].value_counts()
 
-def month_activity_map(selected_user,df):
 
+def month_activity_map(selected_user, df):
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
     return df['month'].value_counts()
 
-def activity_heatmap(selected_user,df):
 
+def activity_heatmap(selected_user, df):
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
@@ -152,7 +151,19 @@ def activity_heatmap(selected_user,df):
     return user_heatmap
 
 
-#----------------------------------------------------------------------------------------
+def analyze_sentiment(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    df['sentiment'] = df['message'].apply(lambda x: sentiment_analyzer.polarity_scores(x)['compound'])
+
+    return df[['sentiment']]
+
+
+
+
+
+
 
 uploaded_file = st.sidebar.file_uploader("Choose a file")
 if uploaded_file is not None:
@@ -171,9 +182,9 @@ if uploaded_file is not None:
     selected_user = st.sidebar.selectbox("Show analysis wrt", user_list)
 
     if st.sidebar.button("Show Analysis"):
-        num_messages, total_words, total_media,total_links = fetch_stats(selected_user, df)
+        num_messages, total_words, total_media, total_links = fetch_stats(selected_user, df)
 
-        col1, col2, col3,col4 = st.columns(4)
+        col1, col2, col3, col4 = st.columns(4)
 
         with col1:
             st.header("Total Messages")
@@ -232,17 +243,15 @@ if uploaded_file is not None:
         ax = sns.heatmap(user_heatmap)
         st.pyplot(fig)
 
-
-
         if selected_user == 'Overall':
             st.title('Most Busy Users')
-            x,new_df = most_busy_users(df)
+            x, new_df = most_busy_users(df)
             fig, ax = plt.subplots()
 
             col1, col2 = st.columns(2)
 
             with col1:
-                ax.bar(x.index, x.values,color='red')
+                ax.bar(x.index, x.values, color='red')
                 plt.xticks(rotation='vertical')
                 st.pyplot(fig)
 
@@ -250,15 +259,15 @@ if uploaded_file is not None:
                 st.dataframe(new_df)
 
             st.title('Word Cloud')
-            df_wc = create_wordcloud(selected_user,df)
-            fig,ax = plt.subplots()
+            df_wc = create_wordcloud(selected_user, df)
+            fig, ax = plt.subplots()
             ax.imshow(df_wc)
             st.pyplot(fig)
 
-            most_common_df = most_common_words(selected_user,df)
+            most_common_df = most_common_words(selected_user, df)
 
-            fig,ax = plt.subplots()
-            ax.bar(most_common_df[0],most_common_df[1])
+            fig, ax = plt.subplots()
+            ax.bar(most_common_df[0], most_common_df[1])
             plt.xticks(rotation='vertical')
             st.title('Most Common Words')
             st.pyplot(fig)
@@ -274,4 +283,15 @@ if uploaded_file is not None:
                 fig, ax = plt.subplots()
                 ax.pie(emoji_df[1].head(), labels=emoji_df[0].head(), autopct="%0.2f")
                 st.pyplot(fig)
+
+            st.title('Sentiment Analysis')
+
+            sentiment_df = analyze_sentiment(selected_user, df)
+
+            if not sentiment_df.empty:
+                 fig, ax = plt.subplots()
+                 ax.plot(sentiment_df['sentiment'], color='blue')
+                 st.pyplot(fig)
+            else:
+                 st.warning("Sentiment analysis data is not available.")
 
