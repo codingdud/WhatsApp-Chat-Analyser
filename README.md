@@ -1,8 +1,9 @@
+```markdown
 # WhatsApp-Chat-Analyser
 
 ## Overview
 
-The WhatsApp Chat Analyzer is a tool designed to analyze and provide statistical insights into WhatsApp group or individual chats. By uploading the chat data, users can obtain valuable information such as total media sent, message count, word frequency, word cloud representation, and emojis usage.
+The WhatsApp Chat Analyzer is a tool designed to analyze and provide statistical insights into WhatsApp group or individual chats. By uploading the chat data, users can obtain valuable information such as total media sent, message count, word frequency, word cloud representation, emojis usage, and sentiment analysis.
 
 ## Features
 
@@ -11,6 +12,7 @@ The WhatsApp Chat Analyzer is a tool designed to analyze and provide statistical
 - **Word Analysis:** Analyzes the most frequently used words in the chat.
 - **Word Cloud:** Generates a visually appealing word cloud representation based on the chat content.
 - **Emojis Usage:** Highlights the emojis used and their frequency.
+- **Sentiment Analysis:** Analyzes the sentiment of messages using the VADER sentiment analyzer.
 
 ## Usage
 
@@ -51,6 +53,7 @@ Explore the different tabs to view detailed statistics and visualizations.
 - **Streamlit:** Used for building the web application interface.
 - **Python:** The primary programming language for developing the analyzer.
 - **Pandas, WordCloud:** Libraries for data manipulation and word cloud generation.
+- **VADER Sentiment Analyzer:** Utilized for sentiment analysis.
 
 ## Contributors
 
@@ -59,4 +62,4 @@ Explore the different tabs to view detailed statistics and visualizations.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
+```
