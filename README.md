@@ -1,4 +1,3 @@
-```markdown
 # WhatsApp-Chat-Analyser
 
 ## Overview
