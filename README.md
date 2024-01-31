@@ -68,6 +68,10 @@ Explore the different tabs to view detailed statistics and visualizations.
 - **Pandas, WordCloud:** Libraries for data manipulation and word cloud generation.
 - **VADER Sentiment Analyzer:** Utilized for sentiment analysis.
 
+## Report
+[Whatsapp Chat Analyzer.pdf](https://github.com/sheefanaaz123/WhatsApp-Chat-Analyser/files/14116069/Whatsapp.Chat.Analyzer.pdf)
+
+
 ## Contributor
 
 - [Sheefa Naaz](https://github.com/sheefanaaz123)
