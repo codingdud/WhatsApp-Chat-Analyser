@@ -1,6 +1,6 @@
 # WhatsApp-Chat-Analyser
 
-![_ff2ca86a-5a38-4bbb-b7a2-6af912c9d5a4](https://github.com/sheefanaaz123/WhatsApp-Chat-Analyser/assets/97973932/3f79c022-0617-4194-8f69-ea4e978d68a5)
+![_a077a654-a67e-4727-8d55-6f9c45db7f66](https://github.com/sheefanaaz123/WhatsApp-Chat-Analyser/assets/97973932/f218a139-8d75-4db4-b487-238c2bcf762f)
 
 
 ## Overview
