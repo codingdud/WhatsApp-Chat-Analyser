@@ -54,7 +54,7 @@ Explore the different tabs to view detailed statistics and visualizations.
 - **Pandas, WordCloud:** Libraries for data manipulation and word cloud generation.
 - **VADER Sentiment Analyzer:** Utilized for sentiment analysis.
 
-## Contributors
+## Contributor
 
 - [Sheefa Naaz](https://github.com/sheefanaaz123)
 
