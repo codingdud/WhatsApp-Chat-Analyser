@@ -1,5 +1,8 @@
 # WhatsApp-Chat-Analyser
 
+![_ff2ca86a-5a38-4bbb-b7a2-6af912c9d5a4](https://github.com/sheefanaaz123/WhatsApp-Chat-Analyser/assets/97973932/3f79c022-0617-4194-8f69-ea4e978d68a5)
+
+
 ## Overview
 
 The WhatsApp Chat Analyser is a tool designed to analyze and provide statistical insights into WhatsApp group or individual chats. By uploading the chat data, users can obtain valuable information such as total media sent, message count, word frequency, word cloud representation, emojis usage, and sentiment analysis.
